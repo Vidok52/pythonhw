@@ -152,16 +152,15 @@ def br(arg1):
 br("[][][]][[]")
 
 # Tenth task:
-
 def charFreq(arg1):
-    j = 0
     dictionary = {}
     for i in arg1:
-        dictionary[j] = i
-        j +=1
+        if i in dictionary:
+            dictionary[i] += 1
+        else:
+            dictionary[i] = 1
     print(dictionary)
-  
-charFreq("abbabcbcbdbabababcbcbab")
+charFreq("abbabcbcbdbabababcbcbab") 
 
 # Eleventh task:
 def decToBin(arg1):
