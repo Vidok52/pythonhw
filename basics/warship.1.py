@@ -122,7 +122,8 @@ def shooter():
                     if charc == 1:
                         shot_c = int(shot_c_l)
                 
-                    else:shot_c = int(shot_c)+1
+                    else:
+                        shot_c = int(shot_c)+1
                     
      
 
@@ -389,5 +390,4 @@ def ShipBuilder():
     
 ShipBuilder()
 # PrnField(Map)
-
 shooter()
