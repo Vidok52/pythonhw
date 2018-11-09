@@ -10,14 +10,13 @@ class Department(object):
 
         
 class Employee(object):
-    def __init__(self,Name,Surname,Experience,Profession,Salary,Manager=None):
+    def __init__(self,Name,Surname,Experience,Salary,Manager=None):
         self.Name = Name
         self.Surname = Surname
         self.Experience = Experience
         self.Salary = Salary
         self.Manager = Manager
         self.Subordinates = []
-        self.Profession = Profession
 
         self.counter()
 
@@ -27,8 +26,8 @@ class Employee(object):
 
 
 class manager(Employee):
-    def __init__(self,Name,Surname,Experience,Profession,Salary,Department,Manager=None):
-        super(manager, self).__init__(Name,Surname,Experience,Profession,Salary,Manager)
+    def __init__(self,Name,Surname,Experience,Salary,Department,Manager=None):
+        super(manager, self).__init__(Name,Surname,Experience,Salary,Manager)
         self.Department = Department
         self.counter()
         self.group()
@@ -42,7 +41,7 @@ class manager(Employee):
         des = 0 
         for i in self.Subordinates:
             counter +=1
-            if i.Profession == "Designer": des += 1
+            if isinstance(i, designer): des += 1
             else: dev += 1
         if dev > counter / 2: self.Salary = self.Salary * 1.1
         if counter >= 5: self.Salary = self.Salary + 200
@@ -57,8 +56,8 @@ class developer(Employee):
         print("{0} {1} got salary: {2}$".format(self.Name,self.Surname,self.Salary))
 
 class designer(Employee):
-    def __init__(self,Name,Surname,Experience,Profession,Salary,coefficient,Manager=None):
-        super(designer, self).__init__(Name,Surname,Experience,Profession,Salary,Manager)
+    def __init__(self,Name,Surname,Experience,Salary,coefficient,Manager=None):
+        super(designer, self).__init__(Name,Surname,Experience,Salary,Manager)
         self.coefficient = coefficient
 
     def get_salary(self):
@@ -66,9 +65,9 @@ class designer(Employee):
         print("{0} {1} got salary: {2}$".format(self.Name,self.Surname,self.Salary))
 
 IT = Department("IT")
-Anton = manager("Anton","Golovin",5,"Manager",1500,IT)
-Vitaliy = developer("Vitaliy","Lysenko",1,"Developer",1500,Manager=Anton)
-Artem = designer("Artem","Kubrachenko",3,"Designer",1200,0.8,Manager=Anton)
-Vadim = developer("Vadim","Ostachinskiy",2,"Developer",1300,Manager=Anton)
+Anton = manager("Anton","Golovin",5,1500,IT)
+Vitaliy = developer("Vitaliy","Lysenko",1,1500,Manager=Anton)
+Artem = designer("Artem","Kubrachenko",3,1200,0.8,Manager=Anton)
+Vadim = developer("Vadim","Ostachinskiy",2,1300,Manager=Anton)
 
 IT.get_salary()
