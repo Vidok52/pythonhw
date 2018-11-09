@@ -19,6 +19,12 @@ class Employee(object):
         self.Subordinates = []
 
         self.counter()
+    
+        if self.Salary:
+            if self.Experience >= 5:
+                self.Salary = self.Salary * 1.2 + 500
+            elif self.Experience >= 2:
+                self.Salary = self.Salary + 200
 
     def counter(self):
         if self.Manager:
