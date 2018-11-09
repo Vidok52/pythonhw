@@ -57,8 +57,6 @@ class manager(Employee):
 
 class developer(Employee):     
     def get_salary(self):
-        if self.Experience >= 2: self.Salary =  self.Salary + 200
-        elif self.Experience >=5: self.Salary = self.Salary * 1.2 + 500
         print("{0} {1} got salary: {2}$".format(self.Name,self.Surname,self.Salary))
 
 class designer(Employee):
